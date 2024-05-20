@@ -13,3 +13,5 @@ site
 *.db
 .cache
 !docs_src/**/env.py
+/.venv/bin/*
+/.venv/*

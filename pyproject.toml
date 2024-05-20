@@ -78,6 +78,10 @@ coverage = { extras = ["toml"], version = ">=6.2,<8.0" }
 fastapi = "^0.68.1"
 requests = "^2.26.0"
 ruff = "^0.1.2"
+testcontainers = "^3.7.1"
+psycopg2-binary = "^2.9.7"
+asyncpg = "^0.28.0"
+
 [tool.tiangolo._internal-slim-build.packages.sqlmodel-slim.project]
 name = "sqlmodel-slim"
 
