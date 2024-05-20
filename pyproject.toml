@@ -34,23 +34,17 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-[tool.poetry.dependencies]
-python = "^3.7"
-SQLAlchemy = ">=1.4.36,<2.0.0"
-pydantic = "^1.9.0"
-sqlalchemy2-stubs = { version = "*", allow-prereleases = true }
-typer = "^0.9.0"
-alembic = "^1.12.0"
-
-[tool.poetry.scripts]
-sqlmodel = "sqlmodel.cli:cli"
-
-[tool.poetry.plugins."sqlmodel"]
-migrations = "sqlmodel.cli.migrations.cli:migrations"
+#[tool.poetry.scripts]
+#sqlmodel = "sqlmodel.cli:cli"
+#
+#[tool.poetry.plugins."sqlmodel"]
+#migrations = "sqlmodel.cli.migrations.cli:migrations"
 
 dependencies = [
     "SQLAlchemy >=2.0.0,<2.1.0",
     "pydantic >=1.10.13,<3.0.0",
+    "typer >=0.9.0",
+    "alembic >=1.12.0,<2.0.0"
 ]
 
 [project.urls]
@@ -71,7 +65,7 @@ source-includes = [
     "sqlmodel/sql/expression.py.jinja2",
     ]
 
-[tool.poetry.group.dev.dependencies]
+[project.dev.dependencies]
 pytest = "^7.0.1"
 mypy = "1.4.1"
 # Needed by the code generator using templates
@@ -87,14 +81,23 @@ ruff = "^0.1.2"
 [tool.tiangolo._internal-slim-build.packages.sqlmodel-slim.project]
 name = "sqlmodel-slim"
 
+#[project.scripts]
+#sqlmodel = "sqlmodel.cli:cli"
+#
+#[project.entry-points.sqlmodel]
+#migrations = "sqlmodel.cli.migrations.cli:migrations"
+
 [tool.tiangolo._internal-slim-build.packages.sqlmodel]
 # include-optional-dependencies = ["standard"]
 
 [tool.tiangolo._internal-slim-build.packages.sqlmodel.project]
 optional-dependencies = {}
 
-# [tool.tiangolo._internal-slim-build.packages.sqlmodel.project.scripts]
-# sqlmodel = "sqlmodel.cli:main"
+[tool.tiangolo._internal-slim-build.packages.sqlmodel.project.scripts]
+sqlmodel = "sqlmodel.cli:cli"
+
+[tool.tiangolo._internal-slim-build.packages.sqlmodel.project.entry-points.sqlmodel]
+migrations = "sqlmodel.cli.migrations.cli:migrations"
 
 [tool.coverage.run]
 parallel = true
